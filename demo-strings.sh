@@ -15,3 +15,19 @@ Execute the attack by appending such string as ?hfsagrs=-1+union+select+user%2Cp
 ##more
 /search?query=1'+OR+'1'='1"
 /comment?text=<script>alert('XSS')</script>"
+
+
+#from https://clouddocs.f5.com/training/community/nginx/html/class13/module2/module2.html
+SQL Injection (encoded)
+curl "http://nap-ingress2.f5k8s.netindex.php?password=0%22%20or%201%3D1%20%22%0A"
+SQL Injection
+curl "http://nap-ingress2.f5k8s.net/index.php?password==0'%20or%201=1'"
+SQL Injection
+
+curl "http://nap-ingress2.f5k8s.net/index.php?id=%'%20or%200=0%20union%20select%20null,%20version()%23"
+Cross Site Scripting
+
+curl "http://nap-ingress2.f5k8s.net/index.php?username=<script>"
+Command Injection
+
+The expected output for all the previous requests is the following: ` <html><head><title>Request Rejected</title></head><body>The requested URL was rejected........ `
